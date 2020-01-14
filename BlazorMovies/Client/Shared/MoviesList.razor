@@ -1,22 +1,11 @@
-﻿
+﻿<input type="checkbox" name="DisplayButton" @bind="displayButtons" />
 
-@if (Movies == null)
-{
-    <text>Loading</text>
-}
-else
-{
-
-    <input type="checkbox" name="DisplayButton" @bind="displayButtons" />
-    @foreach (var movie in Movies)
-    {
+<GenericList List="Movies">
+    <ElementTemplate Context="movie">
         <IndividualMovie Movie="movie" DisplayButtons="displayButtons"
                          DeleteMovie="DeleteMovie"></IndividualMovie>
-    }
-}
-
-
-
+    </ElementTemplate>
+</GenericList>
 
 
 @code {
@@ -30,6 +19,24 @@ else
         Movies.Remove(movie);
     }
 
+    //protected override void OnInitialized()
+    //{
+    //    Console.WriteLine("OnInitialized. Movies.Count = " + Movies.Count.ToString());
+    //}
 
+    //protected override void OnParametersSet()
+    //{
+    //    Console.WriteLine("OnParameterSet. Movies.Count = " + Movies.Count.ToString());
+    //}
+
+    //protected override void OnAfterRender(bool firstRender)
+    //{
+    //    Console.WriteLine("OnAfterRender. firstRender = " + firstRender.ToString());
+    //}
+
+    //protected override bool ShouldRender()
+    //{
+    //    return true;
+    //}
 
 }
